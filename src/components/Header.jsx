@@ -10,7 +10,6 @@ import { actionType } from '../context/reducer'
 
 import Logo from './img/logo.png'
 import Avatar from './img/avatar.png'
-// import { async } from '@firebase/util';
 
 const Header = () => {
 
@@ -23,7 +22,7 @@ const Header = () => {
     
     const login = async () => {
         if (!user) {
-            const { user: {refreshToken, providerData} } = await signInWithPopup(firebaseAuth, provider)
+            const { user: { providerData} } = await signInWithPopup(firebaseAuth, provider)
             dispatch({
                 type: actionType.SET_USER,
                 user: providerData[0]
