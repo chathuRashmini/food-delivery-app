@@ -44,8 +44,8 @@ const Header = () => {
     }
 
     return (
-        <header className='w-screen fixed z-50 p-3 px-4 md:p-6 md:px-16'>
-            <div className="hidden md:flex w-full h-full p-4 items-center justify-between">
+        <header className='w-screen fixed z-50 p-3 px-4 md:p-6 md:px-16 bg-primary'>
+            <div className="hidden md:flex w-full h-full items-center justify-between">
                 <Link to='/' className="flex items-center gap-2">
                     <img 
                         src={Logo} 

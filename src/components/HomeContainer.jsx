@@ -1,5 +1,10 @@
 import React from 'react'
+
+import { heroData } from '../utils/data'
+
 import Delivery from './img/delivery.png'
+import HeroBg from './img/heroBg.png'
+
 
 const HomeContainer = () => {
     return (
@@ -28,7 +33,25 @@ const HomeContainer = () => {
                 </button>
             </div>
 
-            <div className="py-2 bg-blue-300 flex-1"></div>
+            <div className="py-2 flex-1 flex items-center relative mt-4 lg:mt-0">
+                <img src={HeroBg} alt="hero-bg" className="h-300 w-full lg:w-auto md:h-600 ml-auto" />
+
+                    <div className="min-w-[190px] h-full absolute flex items-center justify-center gap-4 flex-wrap">
+                        { heroData.map((item, index) => (
+                            <div key={index} className="w-auto p-4 bg-cardOverlay backdrop-blur-md rounded-lg flex flex-col items-center shadow-lg mt-12 md:mt-0">
+                                <img 
+                                    src={item.imageSrc} 
+                                    alt="icecream" 
+                                    className="w-28 lg:w-40 -mt-16" 
+                                />
+                                <p className="font-normal lg:font-semibold mt-3 text-textColor text-md lg:text-lg">{item.name}</p>
+                                <p className="hidden md:flex lg:text-sm text-textColor my-2">{item.decp}</p>
+                                <p className="text-sm font-normal lg:font-semibold text-headingColor"><span className="text-red-600">$ </span>{item.price}</p>
+                            </div>
+                        ))}
+                    </div>
+                
+            </div>
         </section>
     )
 }
