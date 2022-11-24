@@ -62,10 +62,10 @@ const Header = () => {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 200 }}
                     >
-                        <li className="cursor-pointer hover:text-headingColor hover:font-semibold hover:underline underline-offset-4 duration-100 transition-all ease-in-out">Home</li>
-                        <li className="cursor-pointer hover:text-headingColor hover:font-semibold hover:underline underline-offset-4 duration-100 transition-all ease-in-out">Menu</li>
-                        <li className="cursor-pointer hover:text-headingColor hover:font-semibold hover:underline underline-offset-4 duration-100 transition-all ease-in-out">About us</li>
-                        <li className="cursor-pointer hover:text-headingColor hover:font-semibold hover:underline underline-offset-4 duration-100 transition-all ease-in-out">Service</li>
+                        <li className="cursor-pointer hover:text-headingColor hover:font-semibold hover:underline underline-offset-4 duration-100 transition-all ease-in-out" onClick={() => setisMenu(false)}>Home</li>
+                        <li className="cursor-pointer hover:text-headingColor hover:font-semibold hover:underline underline-offset-4 duration-100 transition-all ease-in-out" onClick={() => setisMenu(false)}>Menu</li>
+                        <li className="cursor-pointer hover:text-headingColor hover:font-semibold hover:underline underline-offset-4 duration-100 transition-all ease-in-out" onClick={() => setisMenu(false)}>About us</li>
+                        <li className="cursor-pointer hover:text-headingColor hover:font-semibold hover:underline underline-offset-4 duration-100 transition-all ease-in-out" onClick={() => setisMenu(false)}>Service</li>
                     </motion.ul>
 
                     <div className="relative flex items-center justify-center">
@@ -91,7 +91,10 @@ const Header = () => {
                                 exit={{ opacity: 0, scale: 0.6 }}
                             >
                                 <Link to='/createItem'>
-                                    <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-200 transition-all duration-100 ease-in-out text-textColor">
+                                    <p 
+                                        onClick={() => setisMenu(false)}
+                                        className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-200 transition-all duration-100 ease-in-out text-textColor"
+                                    >
                                         New Item <MdAdd />
                                     </p>
                                 </Link>
