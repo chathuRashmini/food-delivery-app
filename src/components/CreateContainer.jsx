@@ -3,10 +3,12 @@ import { motion } from 'framer-motion'
 import { MdFastfood, MdCloudUpload, MdDelete, MdFoodBank, MdAttachMoney } from 'react-icons/md'
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage'
 
+import { useStateValue } from '../context/StateProvider'
+import { getAllItems, saveItem } from '../utils/firebaseFuncitons'
+import { actionType } from '../context/reducer'
 import { storage } from '../firebase.config'
 import { categories } from '../utils/data'
 import Loader from './Loader'
-import { saveItem } from '../utils/firebaseFuncitons'
 
 const CreateContainer = () => {
 
@@ -19,6 +21,7 @@ const CreateContainer = () => {
     const [msg, setmsg] = useState(null)
     const [isLoading, setisLoading] = useState(false)
     const [imageAsset, setimageAsset] = useState(null)
+    const [{}, dispatch] = useStateValue()
 
     const uploadImage = (e) => {
         setisLoading(true)
@@ -30,6 +33,7 @@ const CreateContainer = () => {
             'state_changed', 
             (snapshot) => {
                 const uploadProgress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+                return uploadProgress
             }, 
             (error) => {
                 console.log(error)
@@ -117,6 +121,8 @@ const CreateContainer = () => {
                 setisLoading(false)
             }, 4000);
         }
+
+        fetchData()
     }
 
     const clearData = () => {
@@ -125,6 +131,15 @@ const CreateContainer = () => {
         setprice('')
         setcategory('Select category')
         setimageAsset(null)
+    }
+
+    const fetchData = async () => {
+        await getAllItems().then(data => {
+            dispatch({
+                type: actionType.SET_FOOD_ITEMS,
+                foodItems: data
+            })
+        })
     }
 
     return (
