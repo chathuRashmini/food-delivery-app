@@ -16,7 +16,7 @@ const Header = () => {
     const firebaseAuth = getAuth(app)
     const provider = new GoogleAuthProvider()
 
-    const [{user, cartShow}, dispatch] = useStateValue()
+    const [{ user, cartShow, cartItems }, dispatch] = useStateValue()
 
     const [isMenu, setisMenu] = useState(false)
     
@@ -77,9 +77,12 @@ const Header = () => {
 
                     <div className="relative flex items-center justify-center" onClick={showCart}>
                         <MdShoppingBasket className='text-textColor text-xl hover:text-headingColor cursor-pointer' />
-                        <div className="w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center absolute -top-4 -right-4">
-                            <p className="text-xs text-white font-semibold">2</p>
-                        </div>
+                        { cartItems && cartItems.length > 0 && (
+                            <div className="w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center absolute -top-4 -right-4">
+                                <p className="text-xs text-white font-semibold">{cartItems.length}</p>
+                            </div>
+                        )}
+                        
                     </div>
 
                     <div className="relative">
@@ -119,9 +122,11 @@ const Header = () => {
             <div className="flex items-center justify-between md:hidden w-full h-full p-4">
                 <div className="relative flex items-center justify-center" onClick={showCart}>
                     <MdShoppingBasket className='text-textColor text-xl hover:text-headingColor cursor-pointer' />
-                    <div className="w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center absolute -top-4 -right-4">
-                        <p className="text-xs text-white font-semibold">2</p>
-                    </div>
+                    { cartItems && cartItems.length > 0 && (
+                        <div className="w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center absolute -top-4 -right-4">
+                            <p className="text-xs text-white font-semibold">{cartItems.length}</p>
+                        </div>
+                    )}
                 </div>
 
                 <Link to='/' className="flex items-center gap-2">

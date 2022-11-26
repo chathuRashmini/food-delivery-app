@@ -30,8 +30,9 @@ const MenuContainer = () => {
                             className={`group ${filter === item.urlParamName ? 'bg-green-400' : 'bg-white'} w-24 min-w-[94px] h-28 cursor-pointer rounded-lg drop-shadow-lg flex flex-col 
                             hover:bg-red-500 gap-3 items-center justify-center duration-150 transition-all ease-in-out`}
                             onClick={() => setfilter(item.urlParamName)}
+                            key={index}
                         >
-                            <div key={index} className={`w-10 h-10 rounded-full ${filter === item.urlParamName ? 'bg-card' : 'bg-red-500'} group-hover:bg-card flex items-center justify-center`}>
+                            <div className={`w-10 h-10 rounded-full ${filter === item.urlParamName ? 'bg-card' : 'bg-red-500'} group-hover:bg-card flex items-center justify-center`}>
                                 <span className={` ${filter === item.urlParamName ? 'text-green-400' : 'text-white'} text-lg group-hover:text-red-500`}>
                                     {item.icon}
                                 </span>

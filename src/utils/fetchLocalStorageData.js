@@ -5,3 +5,11 @@ export const fetchUser = () => {
 
     return userInfo
 }
+
+export const fetchCartItems = () => {
+    const cartItemsInfo = localStorage.getItem('cartItems') !== "undefined" ? 
+        JSON.parse(localStorage.getItem('cartItems')) :
+        localStorage.clear()
+
+    return cartItemsInfo ? cartItemsInfo : []
+}
